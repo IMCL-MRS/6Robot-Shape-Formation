@@ -1208,10 +1208,10 @@ void goForward(float angle){
 }
 
 void goForAxis(){
-  rotateToNorthAngle(5,FASTSPEED);
+  rotateToNorthAngle(350,FASTSPEED);
   SetLeftWheelGivenSpeed(30);
   SetRightWheelGivenSpeed(30);
-  vTaskDelay(6000);
+  vTaskDelay(8000);
 }
 
 void goFor_Axis(){

@@ -8,7 +8,7 @@
 #include "vDemoCtl.h"
 
 #define ROBOTS  6
-#define CONFIG_ROBOT4
+#define CONFIG_ROBOT1
 
 #define FASTSPEED  40
 #define LINESPEED  35

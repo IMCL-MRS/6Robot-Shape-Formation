@@ -833,7 +833,6 @@ void robot4Step7(){
   if (isReady3(activeRb[3])) {
 	halt(1);
 	//sundy
-    gotoLeftDelta();
 	point2Point(posA4.x,posA4.y);
         rotateToNorthAngle(90,FASTSPEED);
   }
