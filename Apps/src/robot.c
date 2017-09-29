@@ -8,66 +8,13 @@ extern u8 activeRb[ROBOTS];
 //0 - 360
 float CalibrateNorth2X(void){
   float nAngle = ReadMagSensorAngle2North();
-  float southAngle = -270 + _Y2NORTH;
-  if((nAngle >= -southAngle) && (nAngle <= 180)){
-      nAngle -= southAngle;
+  if((nAngle > FRONT2X) && (nAngle < 180)){
+    nAngle -= FRONT2X;
   }else{
-      nAngle += 360 - southAngle;
+    nAngle += 360 - FRONT2X;
   }
   return nAngle;
 }
-
-// 0~-180, 0~180
-float CalibrateNorth2_Y(void){
-  float nAngle = ReadMagSensorAngle2North();
-  float southAngle = 180 - _Y2NORTH;
-  if((nAngle >= -southAngle) && (nAngle <= 180)){
-    nAngle -= _Y2NORTH;
-  }else{
-    nAngle += 180 + southAngle;
-  }
-  return nAngle;
-}
-
-////0 - 360
-//float CalibrateNorth2X(void){
-//  float nAngle = ReadMagSensorAngle2North();
-//  if((nAngle >= 70) && (nAngle <= 180)){
-//	nAngle -= 70;
-//  }else{
-//	nAngle += 290;
-//  }	
-//  return nAngle;
-//}
-
-
-//float CalibrateNorth2_Y(void){
-//  typeMagSensor magSensor;
-//  float edgeLong=0;
-//  float compX, compY;
-//  float angleReturn;
-//  
-//  magSensor =  ReadMagSensor();
-//  compX = magSensor.magX-MAG_SENSOR_X;
-//  compY = magSensor.magY-MAG_SENSOR_Y;
-//  
-//  edgeLong= sqrt(compX*compX + compY*compY); 
-//  
-//  angleReturn = (180.0f/3.14) * (acos(compY/edgeLong));  
-//  
-//  if (compX < 0){    
-//	angleReturn=0-angleReturn + _Y2NORTH;
-//  }   
-//  
-//  if (compX > 0){    
-//	angleReturn += _Y2NORTH;
-//	if(angleReturn > 180){
-//	  angleReturn -= 360;
-//	}
-//  }  
-//  
-//  return angleReturn;
-//}
 
 //angle -180 to 180
 float ReadMagSensorAngle2North(void) {
@@ -273,17 +220,6 @@ void ControlRobot2Position(float x, float y, float speed){
   while (turnangle >= 360) turnangle -= 360;
   if (turnangle > 180) turnangle = 360 - turnangle;
   ControlRobotRotate(turnangle, 5);
-  /*
-  if ((lineDir-robotDir)<-180) {
-  ControlRobotRotate(lineDir-robotDir+360-20, 5);
-}
-  else if ((lineDir-robotDir)>180) {
-  ControlRobotRotate(lineDir-robotDir-360+20, 5);
-}
-  else {
-  ControlRobotRotate(lineDir-robotDir, 5);
-}
-  */
   
   SetLeftWheelGivenSpeed(1);
   SetRightWheelGivenSpeed(1);
@@ -413,8 +349,6 @@ void RobotPrepare(void) {
 	angle = 0-angle;
   }
   SetRobotAngle(angle);
-  
-  //4. 
 }
 
 float robotAngle=0;
@@ -432,8 +366,6 @@ float getDistance2(float Ax, float Ay, float Bx, float By) {
 
 void rotateTo(float x, float y, float speed,int flag) {
   typeCoordinate start = GetCoordinate();
-//  float lineDir = GetLineDirection(start.x, start.y, x, y);
-//  float robotDir = CalibrateNorth2_Y();
   float lineDir = GetLineDirectionX(start.x, start.y, x, y);
   float robotDir = CalibrateNorth2X();
   float turnangle = lineDir - robotDir;
@@ -460,8 +392,8 @@ void rotateFastTo(float x, float y, float speed,int flag) {
 }
 
 void rotateToNorthAngle(float tar, float speed) {
-  float ang = tar - CalibrateNorth2_Y();
-  if (ang < -180) ang += 360;
+  float ang = tar - CalibrateNorth2X();
+  if (ang < -180) ang += 360 ;
   if (ang > 180) ang -= 360;
   ControlRobotRotate(ang, speed);
 }
@@ -484,9 +416,6 @@ int whichSideByPoint(float ax, float ay, float bx, float by, float cx, float cy)
 
 int whichSide(float x, float y){
   typeCoordinate start = GetCoordinate();
-//  typeCoordinate start = getNowPos();
-//  float lineDir = GetLineDirection(start.x, start.y, x, y);
-//  float robotDir = CalibrateNorth2_Y();
   float lineDir = GetLineDirectionX(start.x, start.y, x, y);
   float robotDir = CalibrateNorth2X();
   float turnangle = lineDir - robotDir;
@@ -1271,9 +1200,23 @@ void gotoRightDelta(){
   vTaskDelay(3000);
 }
 
-void goForward(){
-  rotateToNorthAngle(170,FASTSPEED);
+void goForward(float angle){
+  rotateToNorthAngle(angle,FASTSPEED);
   SetLeftWheelGivenSpeed(30);
   SetRightWheelGivenSpeed(30);
-  vTaskDelay(5000);
+  vTaskDelay(7000);
+}
+
+void goForAxis(){
+  rotateToNorthAngle(5,FASTSPEED);
+  SetLeftWheelGivenSpeed(30);
+  SetRightWheelGivenSpeed(30);
+  vTaskDelay(6000);
+}
+
+void goFor_Axis(){
+  rotateToNorthAngle(180,FASTSPEED);
+  SetLeftWheelGivenSpeed(30);
+  SetRightWheelGivenSpeed(30);
+  vTaskDelay(6000);
 }

@@ -91,6 +91,7 @@ void robot1Step2(){
       beepSing();
       halt(1);
       point2Point(posR1.x,posR1.y);
+      rotateToNorthAngle(90,FASTSPEED);
   }
   halt(2);
   return;
@@ -120,6 +121,7 @@ void robot1Step3(){
 	beepSing();
 	halt(1);
 	point2Point(posT1.x,posT1.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }  
   halt(2);
   return;
@@ -149,6 +151,7 @@ void robot1Step4(){
     beepSing();
 	halt(1);
 	point2Point(posH1.x,posH1.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }   
   halt(2);
   return;
@@ -178,6 +181,7 @@ void robot1Step5(){
 	beepSing();
 	halt(1);
 	point2Point(posT1.x,posT1.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   return;
 }
@@ -206,6 +210,7 @@ void robot1Step6(){
 	beepSing();
 	halt(1);
 	point2Point(posR1.x,posR1.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   return;
 }
@@ -233,8 +238,7 @@ void robot1Step7(){
   if (isReady3(activeRb[0])) {
 	beepSing();
 	//sundy
-//	halt(1);
-	gotoLeftDelta();
+	goFor_Axis();
 	point2Point(posA1.x,posA1.y);
 	rotateToNorthAngle(90,FASTSPEED);
   }
@@ -275,6 +279,7 @@ void robot2Step2(){
   
   if (isReady(activeRb[1])) {
 	point2Point(posR2.x,posR2.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   imReady = 2;
   halt(2);
@@ -305,6 +310,7 @@ void robot2Step3(){
   
   if (isReady2(activeRb[1])) {
 	point2Point(posT2.x,posT2.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   
   imReady = 3;
@@ -335,6 +341,7 @@ void robot2Step4(){
   }
   if (isReady3(activeRb[1])) {  
 	point2Point(posH2.x,posH2.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   
   imReady = 1;
@@ -367,6 +374,7 @@ void robot2Step5(){
 	halt(1);
 	point2Point(posT2.x,posT2.y);
 	rotateToNorthAngle(90,FASTSPEED);
+        rotateToNorthAngle(90,FASTSPEED);
   }
     imReady = 2;
   halt(2);
@@ -398,6 +406,7 @@ void robot2Step6(){
 	halt(1);
 	point2Point(posR2.x,posR2.y);
 	rotateToNorthAngle(90,FASTSPEED);
+        rotateToNorthAngle(90,FASTSPEED);
   }
     imReady = 3;
   halt(2);
@@ -468,8 +477,9 @@ void robot3Step2(){
   }
   
   if (isReady(activeRb[2])) {
-         goForward();
+         goForward(100);
 	 point2Point(posR3.x,posR3.y);
+         rotateToNorthAngle(90,FASTSPEED);
   }
   
   imReady = 2;
@@ -501,6 +511,7 @@ void robot3Step3(){
   
   if (isReady2(activeRb[2])) {
 	point2Point(posT3.x,posT3.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   
   imReady = 3;
@@ -532,6 +543,7 @@ void robot3Step4(){
   
   if (isReady3(activeRb[2])) {
 	point2Point(posH3.x,posH3.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   
   imReady = 1;
@@ -594,6 +606,7 @@ void robot3Step6(){
   if (isReady2(activeRb[2])) {
 	halt(1);
 	point2Point(posR3.x,posR3.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
     imReady = 3;
   halt(2);
@@ -622,9 +635,9 @@ void robot3Step7(){
 	imReady = 3;
   }
   if (isReady3(activeRb[2])) {
-	halt(1);
-    gotoRightDelta();
+	halt(1);    
 	point2Point(posA3.x,posA3.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
     imReady = 0;
   halt(2);
@@ -662,8 +675,9 @@ void robot4Step2(){
 	imReady = 1;
   }
   
-  if (isReady(activeRb[3])) {
+  if (isReady(activeRb[3])) {       
 	point2Point(posR4.x,posR4.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   
   imReady = 2;
@@ -694,6 +708,7 @@ void robot4Step3(){
   }
   if (isReady2(activeRb[3])) {
 	point2Point(posT4.x,posT4.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   
   imReady = 3;
@@ -724,6 +739,7 @@ void robot4Step4(){
   }
   if (isReady3(activeRb[3])) {
 	point2Point(posH4.x,posH4.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   
   imReady = 1;
@@ -786,6 +802,7 @@ void robot4Step6(){
   if (isReady2(activeRb[3])) {
 	halt(1);
 	point2Point(posR4.x,posR4.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
     imReady = 3;
   halt(2);
@@ -818,6 +835,7 @@ void robot4Step7(){
 	//sundy
     gotoLeftDelta();
 	point2Point(posA4.x,posA4.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   imReady = 0;
   halt(2);
@@ -857,6 +875,7 @@ void robot5Step2(){
   
   if (isReady(activeRb[4])) {
 	point2Point(posR5.x,posR5.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   
   imReady = 2;
@@ -887,6 +906,7 @@ void robot5Step3(){
   }
   if (isReady2(activeRb[4])) {
 	point2Point(posT5.x,posT5.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   
   imReady = 3;
@@ -917,6 +937,7 @@ void robot5Step4(){
   }
   if (isReady3(activeRb[4])) {
 	point2Point(posH5.x,posH5.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   
   imReady = 1;
@@ -948,6 +969,7 @@ void robot5Step5(){
   if (isReady(activeRb[4])) {
 	halt(1);
 	point2Point(posT5.x,posT5.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
     imReady = 2;
   halt(2);
@@ -978,6 +1000,7 @@ void robot5Step6(){
   if (isReady2(activeRb[4])) {
 	halt(1);
 	point2Point(posR5.x,posR5.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
     imReady = 3;
   halt(2);
@@ -1008,6 +1031,7 @@ void robot5Step7(){
   if (isReady3(activeRb[4])) {
 	halt(1);
 	point2Point(posA5.x,posA5.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
     imReady = 0;
   halt(2);
@@ -1048,6 +1072,7 @@ void robot6Step2(){
   
   if (isReady(activeRb[5])) {
 	point2Point(posR6.x,posR6.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   
   imReady = 2;
@@ -1078,6 +1103,7 @@ void robot6Step3(){
   }
   if (isReady2(activeRb[5])) {
 	point2Point(posT6.x,posT6.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   
   imReady = 3;
@@ -1108,6 +1134,7 @@ void robot6Step4(){
   }
   if (isReady3(activeRb[5])) {
 	point2Point(posH6.x,posH6.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   
   imReady = 1;
@@ -1139,6 +1166,7 @@ void robot6Step5(){
   if (isReady(activeRb[5])) {
 	halt(1);
 	point2Point(posT6.x,posT6.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   
   imReady = 2;
@@ -1170,6 +1198,7 @@ void robot6Step6(){
   if (isReady2(activeRb[5])) {
 	halt(1);
 	point2Point(posR6.x,posR6.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   imReady = 3;
   halt(2);
@@ -1198,9 +1227,9 @@ void robot6Step7(){
 	imReady = 3;
   }
   if (isReady3(activeRb[5])) {
-	gotoRightDelta();
-	gotoRightDelta();
+        goForAxis();
 	point2Point(posA6.x,posA6.y);
+        rotateToNorthAngle(90,FASTSPEED);
   }
   imReady = 0;
   halt(2);

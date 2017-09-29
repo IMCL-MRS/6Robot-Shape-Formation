@@ -89,7 +89,9 @@ extern int SleepUntilFrontSafe(u8 index, float length);
 
 extern void gotoLeftDelta();
 extern void gotoRightDelta();
-extern void goForward();
+extern void goForward(float angle);
+extern void goFor_Axis();
+extern void goForAxis();
 
 extern void specialRun(float x, float y,float speedR);
 #endif

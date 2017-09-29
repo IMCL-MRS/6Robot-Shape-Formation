@@ -8,7 +8,7 @@
 #include "vDemoCtl.h"
 
 #define ROBOTS  6
-#define CONFIG_ROBOT6
+#define CONFIG_ROBOT4
 
 #define FASTSPEED  40
 #define LINESPEED  35
@@ -22,9 +22,7 @@
 #define FOV		     (50)	
 #define CHECK                (2)
 
-//angle between -y axis and north direction
-#define _Y2NORTH             (25)   //25
-//#define _Y2NORTH             (145)   //HKSP
+#define FRONT2X              (63) 
 #define ACCEL_Z              (-0.5)
 #define ACCEL_TIMES          (10)
 
@@ -59,10 +57,12 @@
 #define MAG_SENSOR_Y    (867.5)	
 #elif defined(CONFIG_ROBOT6)
 #define rbID            (6)
+#define MAG_SENSOR_X    (194)
+#define MAG_SENSOR_Y    (80)
+#elif defined(CONFIG_ROBOT7)
+#define rbID            (7)
 #define MAG_SENSOR_X    (13)
-#define MAG_SENSOR_Y    (457)
-//	#define MAG_SENSOR_X    (-42)
-//	#define MAG_SENSOR_Y    (580)
+#define MAG_SENSOR_Y    (457) 
 #elif defined(CONFIG_ROBOTNONE)
 #define rbID            (0)
 #define MAG_SENSOR_X    (31)
@@ -82,7 +82,6 @@ typedef struct robotPos{
   float locationX;        //4bytes
   float locationY;        //4bytes
 }robotPos;                //8bytes
-
 
 typedef struct wayPoint{
   uint32 i;
