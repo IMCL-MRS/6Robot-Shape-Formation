@@ -29,11 +29,6 @@ volatile u8 isStop = 0;
 volatile u8 stage = 0;
 extern u8 isPickup;
 
-//const typeCoordinate posP1  = {0.3500,0.5000};
-//const typeCoordinate posP2  = {1.0000,0.5000};
-//const typeCoordinate posP3  = {1.0000,0.0755};
-//const typeCoordinate posP4  = {0.3800,0.0755};
-
 const typeCoordinate posP1  = {1.4000,0.7000};
 const typeCoordinate posP2  = {0.4000,0.7000};
 const typeCoordinate posP3  = {0.4000,0.0755};
@@ -77,23 +72,6 @@ void snakeForm(float x, float y){
 			  break;
 			}
 		vTaskDelay(500);
-		/*sychonize very snowly!!!!!!! I donnot know why?*/
-//		static u8 k = 0;
-//		for(i = 0; i < rbCount1; i++){
-//		  if(bCastInfo[activeRb[i] - 1].nodeID == rbID)
-//			continue;
-//		  if(bCastInfo[i].isReady == 1){
-//			k++;
-//		  }
-//		}
-//		if(k != rbCount1-1){
-//		  vTaskDelay(100);
-//		}else{
-//		  imReady = 1;
-//		  vTaskDelay(100);
-//		  SetLedStatus(LED_GREEN, LED_ON);
-//		  break;
-//		}
 	  }
 	}else{
 	  imReady = 1;
@@ -103,25 +81,19 @@ void snakeForm(float x, float y){
 	halt(1);
 	while(bCastInfo[initiator - 1].isLeaderOK != 1){	  
 	  halt(0.5);
-	}
-//	SetLedStatus(LED_GREEN, LED_ON);
-	
+	}	
 	while(!followerInit(initiator)){
 	  halt(0.5);
 	}
-//	halSetLedStatus(LED_RED, LED_ON);
 	imReady = 1;
-//	halt(1);
 	vTaskDelay(1000);
 	
 	while(1){
 	  if(isReady(initiator)){
 		imReady = 1;
-//		halt(0.5);
 		break;
 	  }
 	  vTaskDelay(500);
-//	  halt(0.5);
 	}
   }
   
@@ -255,26 +227,11 @@ void sychronize(){
   beepSing();
 }
 
- //snakeForm(posP1.x, posP1.y);
-
 void recoverShape(){
   shapeForm();
 }
 
 
 void vSnakeTask( void *pvParameters ){ 
-//  int i = 0;
-/*****************Formation Control************/  
   formationControl();
-//  sychronize();
-//  halt(1000);
-///******************Snake Eating ****************/
-//  while(1){
-//	sychronize();  
-//	snakeBeginForm();
-//	for(i = 0;i < 4; i++){
-//	  	runCircle(); 
-//	}
-//	  shapeForm();
-//  }
 }

@@ -51,7 +51,6 @@ int main(void) {
 #elif defined(SNAKE)  
   xTaskCreate( vBCastInfoTask,       ( signed portCHAR * ) "BCast",    configMINIMAL_STACK_SIZE*16, NULL, tskIDLE_PRIORITY+5, NULL );
   xTaskCreate( vSnakeTask,           ( signed portCHAR * ) "SNAKE",    configMINIMAL_STACK_SIZE*5,  NULL, tskIDLE_PRIORITY+1,   NULL );      
-  //  xTaskCreate( vStackCheck,          ( signed portCHAR * ) "STACK",    configMINIMAL_STACK_SIZE,  NULL, tskIDLE_PRIORITY,   NULL );      
 #elif defined(EXAMPLE)
   xTaskCreate( vExampleTask1,        ( signed portCHAR * ) "Example",    configMINIMAL_STACK_SIZE*16, NULL, tskIDLE_PRIORITY+5, NULL );  
 #elif defined(MAG)

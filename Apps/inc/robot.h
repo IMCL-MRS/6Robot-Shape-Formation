@@ -12,7 +12,7 @@
 #define ROBOT_STABLE_ACCEL_X_THR (0.08)
 #define ROBOT_STABLE_ACCEL_Y_THR (0.01)
 #define ROBOT_STABLE_RETRY_THR   (20)
-#define MS_SECOND				 (1000)
+#define MS_SECOND		 (1000)
 #define OBS_TIMEOUT              (7)
 
 #define CLOCKWISE                (1)
